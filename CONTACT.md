@@ -13,7 +13,7 @@ here's my contact info
 **Institution:** Universidad de Palermo [@mail](mailto:kmarti8@palermo.edu)  
 **Career:** Artificial Inteligence Engineer  
 **File number (Legajo):** 0139223  
-[Linklein](https://www.linkedin.com/in/alexander-martinez-montalvo-b70402256/)  
+[LinkedIn](https://www.linkedin.com/in/alexander-martinez-montalvo-b70402256/)  
 
 # FAQ
 *Why Seiryu?*  
