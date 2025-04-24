@@ -49,7 +49,7 @@ If you'd still like to contribute for learning purposes or reference, feel free 
 and submit a pull request. All contribution will be reviewed by me.  
 For detailed guidelines, please refer to [CONTRIBUTING.md](https://github.com/Seiryu362/awRepository/blob/main/CONTRIBUTING.md)  
 
-##Contact
+## Contact
 For feedback or just to say Hi, feel free to reach out!  
 see [CONTACT.md](https://github.com/Seiryu362/awRepository/blob/main/CONTACT.md)  
 [Back to Top](#top)
