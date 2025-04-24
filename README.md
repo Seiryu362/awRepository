@@ -38,7 +38,8 @@ This project has been testes on:
 ## Usage
 1. Clone the repository:  
 ```bash
-git clone https://github.com/Seiryu362/awRepository.git```
+git clone https://github.com/Seiryu362/awRepository.git
+```
 
 ## Contribution
 Thank you for your insterest in this project!  
