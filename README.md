@@ -7,26 +7,48 @@
 </h1>
 <br>
 
-Repositorio estudiantil creado para la materia Arquitectura Web - Departamento de Ingenieria  
+![GitHub commit activity](https://img.shields.io/github/commit-activity/w/Seiryu362/awRepository)
+
+`Project ND` is a node.js API created for educational purposes for my Web Architecture subject
 'echo "Hola Github"'
 
-#Contenido  
+# Content  
 - [About](#About)  
-- [Conocimientos](#Conocimientos)  
-- [Contacto](#Contacto)  
+- [Requirements](#Requirements)
+- [Usage](#Usage)  
+- [Contribution](#Contribution)  
+- [Contact](#Contact)
   
-# About (TBD) 
-"Here goes the about this project" **TBD**  
+## About (TBD) 
+*To be Determined*  
+Made in node.js windows 11 version
+ 
+## Requirements
+To run this project locally, you'll need the following:  
+- **Node.js** (lastest LTS version recommended - [Download here](https://nodejs.org/en/download))  
+- **npm** (comes bundle with Node.js)  
+- A code editor (e.g [Visual Studio Code](https://code.visualstudio.com))  
+- A terminal or command prompt  
+### Optional
+- **Postman** or similar tool for testing  
+- Internet access  
+This project has been testes on:  
+- **Operating System:** Windows 11
 
-## Conocimientos
-Lenguajes de programacion: Python, C, Java  
+## Usage
+1. Clone the repository:  
+```bash
+git clone https://github.com/Seiryu362/awRepository.git```
 
-## Contacto
-**Nombre:** Alexander Martinez Montalvo  
-**Alias:** Seiryu362 [Github](https://github.com/Seiryu362)  
-**Email:** [kmartinez362@gmail.com](mailto:kmartinez362@gmail.com)  
-**Institucion:** Universidad de Palermo [@mail](mailto:kmarti8@palermo.edu)  
-**Carrera:** Ing. Inteligencia Artificial  
-**Legajo:** 0139223  
-[Linklein](https://www.linkedin.com/in/alexander-martinez-montalvo-b70402256/)  
-[Back to Top](#top)  
+## Contribution
+Thank you for your insterest in this project!  
+While this is primarily an educational project and not currently open to active contributions, you're welcome to explore the code and 
+suggest improvements or ideas.  
+If you'd still like to contribute for learning purposes or reference, feel free to fork the repository, make your changes, 
+and submit a pull request. All contribution will be reviewed by me.  
+For detailed guidelines, please refer to [CONTRIBUTING.md](https://github.com/Seiryu362/awRepository/blob/main/CONTRIBUTING.md)  
+
+##Contact
+For feedback or just to say Hi, feel free to reach out!  
+see [CONTACT.md](https://github.com/Seiryu362/awRepository/blob/main/CONTACT.md)  
+[Back to Top](#top)
