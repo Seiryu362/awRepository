@@ -9,7 +9,7 @@
 
 ![GitHub commit activity](https://img.shields.io/github/commit-activity/w/Seiryu362/awRepository)
 
-`Project ND` is a node.js API created for educational purposes for my Web Architecture subject
+`Project ND` is a node.js API created for educational purposes for my Web Architecture subject  
 'echo "Hola Github"'
 
 # Content  
