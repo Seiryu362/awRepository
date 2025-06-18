@@ -58,9 +58,9 @@ git clone https://github.com/Seiryu362/awRepository.git
 awRepository/  
 |--index.js  
 |--routes/  
-  |--events.js  
+ |--events.js  
 |-- data/  
-  |--events.json  
+ |--events.json  
 
 ## Contribution
 Thank you for your insterest in this project!  
