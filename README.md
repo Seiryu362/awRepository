@@ -9,26 +9,39 @@
 
 ![GitHub commit activity](https://img.shields.io/github/commit-activity/w/Seiryu362/awRepository)
 
-`Project ND` is a node.js API created for educational purposes for my Web Architecture subject  
+`Eventiful` is a node.js API created for educational purposes for my Web Architecture subject  
 'echo "Hola Github"'
 
 # Content  
-- [About](#About)  
+- [About](#About) 
+- [Features](#Features)
 - [Requirements](#Requirements)
 - [Usage](#Usage)  
+- [Estructure](#Estructure)
 - [Contribution](#Contribution)  
 - [Contact](#Contact)
   
-## About (TBD) 
-*To be Determined*  
-Made in node.js windows 11 version
+## About
+A simple RESTful API built with Node.js and Express that allows you to manage events in a calendar.  
+
+## Features
+- Create, Read, Update and Delete events
+- Each event has:
+  - `id`: Unique identifier
+  - `title`: Title of the event
+  - `description`: Description
+  - `date`: Event date
  
 ## Requirements
 To run this project locally, you'll need the following:  
 - **Node.js** (lastest LTS version recommended - [Download here](https://nodejs.org/en/download))  
 - **npm** (comes bundle with Node.js)  
+- **Express** 
+- **fs** Native Node Module  
+- **path** Native Node Module  
 - A code editor (e.g [Visual Studio Code](https://code.visualstudio.com))  
 - A terminal or command prompt  
+
 ### Optional
 - **Postman** or similar tool for testing  
 - Internet access  
@@ -39,7 +52,15 @@ This project has been testes on:
 1. Clone the repository:  
 ```bash
 git clone https://github.com/Seiryu362/awRepository.git
-```
+```  
+
+## Estructure
+awRepository/
+|--index.js
+|--routes/
+  |--events.js
+|-- data/
+  |--events.json  
 
 ## Contribution
 Thank you for your insterest in this project!  
