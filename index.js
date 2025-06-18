@@ -8,6 +8,6 @@ app.use(express.json());
 app.use('/api/events', eventosRoutes);
 
 
-app.listen(port, function () {
-  console.log('Servidor corriendo en http://localhost:' + port);
+app.listen(port, () => {
+  console.log('Server runnning on port ${port}');
 });

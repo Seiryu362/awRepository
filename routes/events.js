@@ -6,13 +6,13 @@ const router = express.Router();
 const dataPath = path.join(__dirname, '../data/events.json');
 
 // Obtener todos los eventos
-router.get('/', function (req, res) {
+router.get('/', (req, res) => {
   const data = JSON.parse(fs.readFileSync(dataPath));
   res.json(data);
 });
 
 // Obtener evento por ID
-router.get('/:id', function (req, res) {
+router.get('/:id', (req, res) => {
   const data = JSON.parse(fs.readFileSync(dataPath));
   const evento = data.find(function (e) {
     return e.id === parseInt(req.params.id);
@@ -25,7 +25,7 @@ router.get('/:id', function (req, res) {
 });
 
 // Crear nuevo evento
-router.post('/', function (req, res) {
+router.post('/', (req, res) => {
   const data = JSON.parse(fs.readFileSync(dataPath));
   const nuevo = {
     id: Date.now(),
@@ -39,7 +39,7 @@ router.post('/', function (req, res) {
 });
 
 // Actualizar un evento existente
-router.put('/:id', function (req, res) {
+router.put('/:id', (req, res) => {
   const data = JSON.parse(fs.readFileSync(dataPath));
   const index = data.findIndex(function (e) {
     return e.id === parseInt(req.params.id);
@@ -55,7 +55,7 @@ router.put('/:id', function (req, res) {
 });
 
 // Eliminar evento
-router.delete('/:id', function (req, res) {
+router.delete('/:id', (req, res) => {
   const data = JSON.parse(fs.readFileSync(dataPath));
   const nuevoData = data.filter(function (e) {
     return e.id !== parseInt(req.params.id);
