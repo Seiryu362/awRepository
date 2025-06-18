@@ -55,11 +55,11 @@ git clone https://github.com/Seiryu362/awRepository.git
 ```  
 
 ## Estructure
-awRepository/
-|--index.js
-|--routes/
-  |--events.js
-|-- data/
+awRepository/  
+|--index.js  
+|--routes/  
+  |--events.js  
+|-- data/  
   |--events.json  
 
 ## Contribution
