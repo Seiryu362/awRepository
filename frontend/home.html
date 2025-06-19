@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Eventful</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      text-align: center;
+    }
+    table {
+      margin: auto;
+      border-collapse: collapse;
+    }
+    th, td {
+      border: 1px solid #ccc;
+      padding: 8px;
+      width: 40px;
+      height: 40px;
+    }
+    th {
+      background-color: #f2f2f2;
+    }
+    h1 {
+      margin-top: 40px;
+    }
+  </style>
+</head>
+<body>
+  <h1>📅 Eventful</h1>
+  <h2 id="month-year"></h2>
+  <table id="calendar"></table>
+
+  <script>
+    const calendar = document.getElementById("calendar");
+    const header = document.getElementById("month-year");
+
+    const now = new Date();
+    const year = now.getFullYear();
+    const month = now.getMonth();
+    const firstDay = new Date(year, month, 1).getDay();
+    const daysInMonth = new Date(year, month + 1, 0).getDate();
+    const monthNames = ["January", "February", "March", "April", "May", "June",
+                        "July", "August", "September", "October", "November", "December"];
+
+    header.textContent = monthNames[month] + " " + year;
+
+    const days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+    let html = "<tr>" + days.map(day => `<th>${day}</th>`).join('') + "</tr><tr>";
+
+    for (let i = 0; i < firstDay; i++) {
+      html += "<td></td>";
+    }
+
+    for (let day = 1; day <= daysInMonth; day++) {
+      html += `<td>${day}</td>`;
+      if ((firstDay + day) % 7 === 0) html += "</tr><tr>";
+    }
+
+    html += "</tr>";
+    calendar.innerHTML = html;
+  </script>
+</body>
+</html>

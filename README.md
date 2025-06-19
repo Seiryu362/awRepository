@@ -9,7 +9,7 @@
 
 ![GitHub commit activity](https://img.shields.io/github/commit-activity/w/Seiryu362/awRepository)
 
-`Eventiful` is a node.js API created for educational purposes for my Web Architecture subject  
+`Eventful` is a node.js API created for educational purposes for my Web Architecture subject  
 'echo "Hola Github"'
 
 # Content  
@@ -17,7 +17,6 @@
 - [Features](#Features)
 - [Requirements](#Requirements)
 - [Usage](#Usage)  
-- [Estructure](#Estructure)
 - [Contribution](#Contribution)  
 - [Contact](#Contact)
   
@@ -53,14 +52,6 @@ This project has been testes on:
 ```bash
 git clone https://github.com/Seiryu362/awRepository.git
 ```  
-
-## Estructure
-awRepository/  
-|--index.js  
-|--routes/  
- |--events.js  
-|-- data/  
- |--events.json  
 
 ## Contribution
 Thank you for your insterest in this project!  
