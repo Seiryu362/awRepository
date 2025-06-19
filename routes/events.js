@@ -44,7 +44,7 @@ router.post('/', (req, res) => {
 router.put('/:id', (req, res) => {
   const data = JSON.parse(fs.readFileSync(dataPath));
   const index = data.findIndex(function (e) {
-    return e.id === parseInt(req.params.id);
+    return e.id === req.params.id; 
   });
 
   if (index === -1) {

@@ -61,18 +61,19 @@
       if (action === "create") {
         form = `
           <h3>Create event</h3>
-          <form id="createForm">
+          <form id="createForm" onsubmit="createEvent(event)"> 
             <label>Title: <input name="title" required></label>
             <label>Description: <textarea name="description" required></textarea></label>
             <label>Date and hour (YYYY-MM-DD HH:mm): <input name="date" required></label>
-            <button type="submit">Create</button>
+          <button type="submit">Create</button>
           </form>`;
-      }
+}
+
 
       if (action === "update") {
         form = `
           <h3>Update event</h3>
-          <form id="updateForm">
+          <form id="updateForm" onsubmit="updateEvent(event)">
             <label>Event ID: <input name="id" required></label>
             <label>New title: <input name="title"></label>
             <label>New Description: <textarea name="description"></textarea></label>
