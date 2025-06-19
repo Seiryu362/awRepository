@@ -1,64 +1,154 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Eventful</title>
+  <meta charset="UTF-8" />
+  <title>Restful</title>
+  <link rel="icon" href="data:,">
   <style>
-    body {
-      font-family: sans-serif;
-      text-align: center;
-    }
-    table {
-      margin: auto;
-      border-collapse: collapse;
-    }
-    th, td {
-      border: 1px solid #ccc;
-      padding: 8px;
-      width: 40px;
-      height: 40px;
-    }
-    th {
-      background-color: #f2f2f2;
-    }
-    h1 {
-      margin-top: 40px;
-    }
+    body { font-family: sans-serif; text-align: center; }
+    table { margin: auto; border-collapse: collapse; }
+    th, td { border: 1px solid #ccc; padding: 8px; width: 40px; height: 40px; }
+    th { background-color: #f2f2f2; }
+    h1 { margin-top: 40px; }
+    form { margin: 20px auto; max-width: 400px; text-align: left; }
+    label { display: block; margin-top: 10px; }
+    input, textarea { width: 100%; padding: 5px; }
+    button { margin-top: 10px; }
+    #response { margin-top: 20px; color: green; }
   </style>
 </head>
 <body>
-  <h1>📅 Eventful</h1>
+  <h1>📅 Restful</h1>
   <h2 id="month-year"></h2>
   <table id="calendar"></table>
 
+  <div>
+    <button onclick="showForm('create')">Create event</button>
+    <button onclick="showForm('update')">Update event</button>
+    <button onclick="showForm('delete')">Delete event</button>
+    <button onclick="getEvents()">Fetch events</button>
+  </div>
+
+  <div id="form-container"></div>
+  <div id="response"></div>
+
   <script>
+    // Generar calendario del mes actual
     const calendar = document.getElementById("calendar");
     const header = document.getElementById("month-year");
-
     const now = new Date();
     const year = now.getFullYear();
     const month = now.getMonth();
     const firstDay = new Date(year, month, 1).getDay();
     const daysInMonth = new Date(year, month + 1, 0).getDate();
-    const monthNames = ["January", "February", "March", "April", "May", "June",
-                        "July", "August", "September", "October", "November", "December"];
-
+    const monthNames = ["January","February","March","April","May","June","July","August","September","October","November","December"];
     header.textContent = monthNames[month] + " " + year;
-
-    const days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+    const days = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
     let html = "<tr>" + days.map(day => `<th>${day}</th>`).join('') + "</tr><tr>";
-
-    for (let i = 0; i < firstDay; i++) {
-      html += "<td></td>";
-    }
-
+    for (let i = 0; i < firstDay; i++) html += "<td></td>";
     for (let day = 1; day <= daysInMonth; day++) {
       html += `<td>${day}</td>`;
       if ((firstDay + day) % 7 === 0) html += "</tr><tr>";
     }
-
     html += "</tr>";
     calendar.innerHTML = html;
+
+    // Mostrar formularios
+    function showForm(action) {
+      const formDiv = document.getElementById("form-container");
+      let form = "";
+
+      if (action === "create") {
+        form = `
+          <h3>Create event</h3>
+          <form id="createForm">
+            <label>Title: <input name="title" required></label>
+            <label>Description: <textarea name="description" required></textarea></label>
+            <label>Date and hour (YYYY-MM-DD HH:mm): <input name="date" required></label>
+            <button type="submit">Create</button>
+          </form>`;
+      }
+
+      if (action === "update") {
+        form = `
+          <h3>Update event</h3>
+          <form id="updateForm">
+            <label>Event ID: <input name="id" required></label>
+            <label>New title: <input name="title"></label>
+            <label>New Description: <textarea name="description"></textarea></label>
+            <label>New Date and hour: <input name="date"></label>
+            <button type="submit">Update</button>
+          </form>`;
+      }
+
+      if (action === "delete") {
+        form = `
+          <h3>Delete event</h3>
+          <form id="deleteForm">
+            <label>Event ID: <input name="id" required></label>
+            <button type="submit">Delete</button>
+          </form>`;
+      }
+
+      formDiv.innerHTML = form;
+      document.getElementById("response").innerText = "";
+
+      // Asignar eventos después de renderizar el formulario
+      if (action === "create") {
+        document.getElementById("createForm").addEventListener("submit", createEvent);
+      }
+      if (action === "update") {
+        document.getElementById("updateForm").addEventListener("submit", updateEvent);
+      }
+      if (action === "delete") {
+        document.getElementById("deleteForm").addEventListener("submit", deleteEvent);
+      }
+    }
+
+    // Crear evento
+    async function createEvent(e) {
+      e.preventDefault();
+      const data = Object.fromEntries(new FormData(e.target));
+      const id = `${Date.now().toString().slice(-4)}${data.date.replace(/[-: ]/g, '')}`;
+      const res = await fetch("/api/events", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ ...data, id })
+      });
+      document.getElementById("response").innerText = res.ok ? "✅ Event Created" : "❌ Error creating event";
+    }
+
+    // Actualizar evento
+    async function updateEvent(e) {
+      e.preventDefault();
+      const data = Object.fromEntries(new FormData(e.target));
+      const res = await fetch(`/api/events/${data.id}`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data)
+      });
+      document.getElementById("response").innerText = res.ok ? "✅ Event Updated" : "❌ Event not found";
+    }
+
+    // Eliminar evento
+    async function deleteEvent(e) {
+      e.preventDefault();
+      const data = Object.fromEntries(new FormData(e.target));
+      const res = await fetch(`/api/events/${data.id}`, {
+        method: "DELETE"
+      });
+      document.getElementById("response").innerText = res.ok ? "✅ Event Deleted" : "❌ Event not found";
+    }
+
+    // Ver todos los eventos
+    async function getEvents() {
+      const res = await fetch("/api/events");
+      const events = await res.json();
+      document.getElementById("form-container").innerHTML = `
+        <h3>All events</h3>
+        <pre>${JSON.stringify(events, null, 2)}</pre>`;
+      document.getElementById("response").innerText = "";
+    }
   </script>
 </body>
 </html>

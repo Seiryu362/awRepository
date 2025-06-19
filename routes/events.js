@@ -1,6 +1,7 @@
 const express = require('express');
 const fs = require('fs');
 const path = require('path');
+const { title } = require('process');
 const router = express.Router();
 
 const dataPath = path.join(__dirname, '../data/events.json');
@@ -20,23 +21,24 @@ router.get('/:id', (req, res) => {
   if (evento) {
     res.json(evento);
   } else {
-    res.status(404).json({ msg: 'No encontrado' });
+    res.status(404).json({ msg: 'Not found' });
   }
 });
 
 // Crear nuevo evento
 router.post('/', (req, res) => {
   const data = JSON.parse(fs.readFileSync(dataPath));
-  const nuevo = {
-    id: Date.now(),
-    titulo: req.body.titulo,
-    descripcion: req.body.descripcion,
-    fecha: req.body.fecha
+  const newEvent = {
+    id: req.body.id, 
+    title: req.body.title,
+    description: req.body.description,
+    date: req.body.date
   };
-  data.push(nuevo);
+  data.push(newEvent);
   fs.writeFileSync(dataPath, JSON.stringify(data, null, 2));
-  res.status(201).json(nuevo);
+  res.status(201).json(newEvent);
 });
+
 
 // Actualizar un evento existente
 router.put('/:id', (req, res) => {
@@ -46,7 +48,7 @@ router.put('/:id', (req, res) => {
   });
 
   if (index === -1) {
-    return res.status(404).json({ msg: 'No encontrado' });
+    return res.status(404).json({ msg: 'Not Found' });
   }
 
   data[index] = Object.assign(data[index], req.body);
@@ -57,17 +59,18 @@ router.put('/:id', (req, res) => {
 // Eliminar evento
 router.delete('/:id', (req, res) => {
   const data = JSON.parse(fs.readFileSync(dataPath));
-  const nuevoData = data.filter(function (e) {
-    return e.id !== parseInt(req.params.id);
-  });
+  const id = req.params.id;
 
-  if (nuevoData.length === data.length) {
-    return res.status(404).json({ msg: 'No encontrado' });
+  const updatedData = data.filter(e => e.id !== id);
+
+  if (updatedData.length === data.length) {
+    return res.status(404).json({ msg: 'Not found' });
   }
 
-  fs.writeFileSync(dataPath, JSON.stringify(nuevoData, null, 2));
-  res.json({ msg: 'Evento eliminado' });
+  fs.writeFileSync(dataPath, JSON.stringify(updatedData, null, 2));
+  res.json({ msg: 'Deleted Event' });
 });
+
 
 module.exports = router;
 // Este archivo define las rutas para manejar eventos en una API RESTful.
